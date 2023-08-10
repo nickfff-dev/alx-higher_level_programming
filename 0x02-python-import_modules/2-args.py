@@ -1,6 +1,3 @@
-#!/usr/bin/python3
-
-
 if __name__ == "__main__":
     import sys
     args = len(sys.argv)
@@ -9,5 +6,6 @@ if __name__ == "__main__":
     elif args == 2:
         print('{0} argument:\n1: {1}'.format(args - 1, sys.argv[1]))
     else:
-        print('{:d} arguments:'.format(args - 1))
-        print('\n'.join('{}: {}'.format(*k) for k in enumerate(sys.argv[1:], start=1)))
+        print('{0} arguments:'.format(args - 1))
+        for i in range(1, args):
+            print('{0}: {1}'.format(i, sys.argv[i]))

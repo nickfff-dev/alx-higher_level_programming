@@ -1,6 +1,5 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
 def no_c(my_string):
-    new_array = list(my_string)
-    [new_array.remove(x) for x in new_array if x == 'c' or x == 'C']
-    return ''.join(new_array)
+    translation = {99: None, 67:None}
+    return my_string.translate(translation)

@@ -18,6 +18,7 @@ if (new == NULL)
 return (NULL);
 }
 new->n = number;
+new->next = NULL;
 if (*head == NULL)
 {
 *head = new;
@@ -25,7 +26,7 @@ if (*head == NULL)
 else
 current = *head;
 {
-while (number > current->n && current != NULL)
+while (current != NULL && number > current->n)
 {
 prev = current;
 current = current->next;

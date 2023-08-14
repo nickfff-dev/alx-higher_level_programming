@@ -14,8 +14,8 @@ int check_cycle(listint_t *list)
 		return (0);
 	}
 	donkey = list;
-	car = list;
-	while (car != NULL && car->next != NULL)
+	car = list->next->next;
+	while (car != NULL && car->next->next != NULL)
 	{
 		if (car == donkey)
 		{

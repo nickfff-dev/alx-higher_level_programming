@@ -17,12 +17,12 @@ int check_cycle(listint_t *list)
 	car = list->next->next;
 	while (car != NULL && car->next->next != NULL)
 	{
+		donkey = donkey->next;
+		car = car->next->next;
 		if (car == donkey)
 		{
 			return (1);
 		}
-		donkey = donkey->next;
-		car = car->next->next;
 	}
 	return (0);
 }

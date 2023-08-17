@@ -4,5 +4,5 @@ def square_matrix_simple(matrix=[]):
     if isEmpty == 0:
         return None
     else:
-        squares = [[elem ** 2 for elem in row] for row in matrix]
+        squares = list(map(lambda row: list(map(lambda x: x ** 2, row)), matrix))
         return squares

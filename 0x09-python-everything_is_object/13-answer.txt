@@ -1,3 +1,2 @@
-<stdin>:1: SyntaxWarning: "is" with a literal. Did you mean "=="?
-False
+SyntaxWarning: "is" with a literal. Did you mean "=="? False
 

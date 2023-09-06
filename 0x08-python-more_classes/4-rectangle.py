@@ -1,46 +1,36 @@
 #!/usr/bin/python3
-"""
-A class that represents a rectangle.
+"""Defines a rectangle.
 """
 
 
 class Rectangle:
-    """
-    A class that represents a rectangle.
-
-    The __init__ method may be documented in either the class level
-    docstring, or as a docstring on the __init__ method itself.
-
-    Note:
-        Do not include the `self` parameter in the ``Args`` section.
-
-    Args:
-        width (:obj:`int`, optional): The width of the rectangle.
-        height (:obj:`int`, optional): The height of the rectangle
+    """Defines a rectangle.
 
     Attributes:
-        width (int): width of the rectangle.
-        height (int): height of the rectangle.
+        width (int): The width of the rectangle.
+        height (int): The height of the rectangle.
     """
 
     def __init__(self, width=0, height=0):
-        """
-        Constructs a new Rectangle with the given width and height.
+        """Initializes the rectangle.
+
+        Args:
+            width (int, optional): The width of the rectangle.
+            Defaults to 0.
+            height (int, optional): The height of the rectangle.
+            Defaults to 0.
         """
         self.width = width
         self.height = height
 
     @property
     def width(self):
-        """
-        The width of the rectangle.
-        """
+        """Gets the width of the rectangle."""
         return self.__width
 
     @width.setter
     def width(self, value):
-        """
-        Sets the width of the rectangle.
+        """Sets the width of the rectangle.
 
         Args:
             value (int): The width of the rectangle.
@@ -57,15 +47,12 @@ class Rectangle:
 
     @property
     def height(self):
-        """
-        The height of the rectangle.
-        """
+        """Gets the height of the rectangle."""
         return self.__height
 
     @height.setter
     def height(self, value):
-        """
-        Sets the height of the rectangle.
+        """Sets the height of the rectangle.
 
         Args:
             value (int): The height of the rectangle.
@@ -81,8 +68,7 @@ class Rectangle:
         self.__height = value
 
     def area(self):
-        """
-        Calculates the area of the rectangle.
+        """Calculates the area of the rectangle.
 
         Returns:
             int: The area of the rectangle.
@@ -90,37 +76,33 @@ class Rectangle:
         return self.__width * self.__height
 
     def perimeter(self):
-        """
-        Calculates the perimeter of the rectangle.
+        """Calculates the perimeter of the rectangle.
 
         Returns:
-            int: The perimeter of the rectangle,
-            or 0 if either width or height is 0.
+            int: The perimeter of the rectangle, or 0
+            if width or height is 0.
         """
         if self.__width == 0 or self.__height == 0:
             return 0
         return 2 * (self.__width + self.__height)
 
+    def __str__(self):
+        """Returns a string representation of the rectangle using
+        the "#" character.
 
-class RectangleError(Exception):
-    """
-    Exceptions are documented in the same way as classes.
+        Returns:
+            str: The string representation of the rectangle, or
+            an empty string if width or height is 0.
+        """
+        if self.__width == 0 or self.__height == 0:
+            return ""
+        return "\n".join(["#" * self.__width for _ in range(self.__height)])
 
-    The __init__ method may be documented in either the class level
-    docstring, or as a docstring on the __init__ method itself.
+    def __repr__(self):
+        """Returns a string representation of the rectangle that
+        can be used to recreate the rectangle instance.
 
-    Note:
-        Do not include the `self` parameter in the ``Args`` section.
-
-    Args:
-        msg (str): Human readable string describing the exception.
-        code (:obj:`int`, optional): Error code.
-
-    Attributes:
-        msg (str): Human readable string describing the exception.
-        code (int): Exception error code.
-    """
-
-    def __init__(self, msg, code):
-        self.msg = msg
-        self.code = code
+        Returns:
+            str: A string representation of the rectangle.
+        """
+        return f"Rectangle({self.__width}, {self.__height})"

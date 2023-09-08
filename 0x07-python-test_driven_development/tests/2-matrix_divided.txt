@@ -1,0 +1,66 @@
+Test cases for 2-matrix_divided.py
+==============================
+
+the matrix_divided module divides a matrix matrix with div.
+
+Usage
+=====
+Import function from module:
+    >>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+
+
+matrix must be a nested list consisting of numbers.
+    >>> print(matrix_divided(matrix="random string", 3))
+    Traceback (most recent call last):
+	      ...
+    TypeError: matrix must be a nested list of integers or floats
+
+an empty list will raise the TypeError.
+    >>> print(matrix_divided(matrix=[], 3))
+   Traceback (most recent call last):
+	      ...
+    TypeError: matrix must be a nested list of integers or floats
+
+an empty list of lists will succeed.
+    >>> print(matrix_divided(matrix=[[]], 3))
+    [[]]
+
+if matrix is not a nested list.
+    >>> print(matrix_divided(matrix=[24, 27, 37], 3))
+   Traceback (most recent call last):
+	      ...
+    TypeError: matrix must be a nested list of integers or floats
+
+if any elements in matrix are not numbers
+    >>> print(matrix_divided(matrix=[[4, "q", 6], [10,11,12]], 3))
+    Traceback (most recent call last):
+	      ...
+    TypeError: matrix must be a nested list of integers or floats
+
+all lists should be of same length.
+    >>> print(matrix_divided(matrix=[[1,2,3], [1,2,3,4]], 2))
+   Traceback (most recent call last):
+	      ...
+    TypeError: Each row of the matrix must have the same len
+
+The second parameter must be either an int or float.
+    >>> print(matrix_divided(matrix=[[1,2,3],[1,2,3]], "i dont divide"))
+    Traceback (most recent call last):
+	      ...
+    TypeError: div must be a number
+
+The second parameter is null
+    >>> print(matrix_divided(matrix=[[1,2,3],[1,2,3]], None))
+    Traceback (most recent call last):
+	      ...
+    TypeError: div must be a number
+
+The second parameter is zero.
+    >>> print(matrix_divided(matrix=[[1,2,3],[1,2,3]], 0))
+    Traceback (most recent call last):
+	      ...
+    ZeroDivisionError: division by zero
+
+Succesful call.
+    >>> print(matrix_divided(matrix=[[6, 8, 10],[12, 14, 16]], 2))
+    [[3, 4, 5], [6, 7, 8]]

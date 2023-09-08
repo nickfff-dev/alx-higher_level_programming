@@ -1,0 +1,57 @@
+===========================
+How to Use text_indentation
+===========================
+
+This module defines a function ``text_indentation(text)``.
+
+Usage
+=====
+
+``text_indentation(...)`` prints the text with two new lines after each occurrence of special characters ('.', ':', '?', '!').
+
+::
+
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
+    >>> text_indentation("Hello. How are you? I'm fine!")
+    Hello.
+
+    How are you?
+
+    I'm fine!
+
+
+::
+
+    >>> text_indentation("Hello How are you I'm fine")
+    Hello How are you I'm fine
+
+Invalid Inputs
+==============
+
+The parameter ``text`` must be a string. Otherwise, a TypeError is raised.
+
+::
+
+    >>> text_indentation(123)
+    Traceback (most recent call last):
+    TypeError: text must be a string
+
+::
+
+    >>> text_indentation(["Hello", "How are you", "I'm fine!"])
+    Traceback (most recent call last):
+    TypeError: text must be a string
+
+Text with Spaces
+================
+
+The function should remove leading and trailing spaces in each line.
+
+::
+
+    >>> text_indentation(" Hello. How are you? I'm fine! ")
+    Hello.
+
+    How are you?
+
+    I'm fine!

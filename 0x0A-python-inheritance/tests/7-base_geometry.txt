@@ -13,28 +13,30 @@ The `BaseGeometry` class has a method `integer_validator(name, value)` that vali
 Example usage:
 
 >>> bg = BaseGeometry()
->>> bg.integer_validator("my_int", 12)  # Test Case 1: Check if the method correctly validates a positive integer
->>> bg.integer_validator("width", 89)  # Test Case 1: Check if the method correctly validates a positive integer
+
+# Test Case 1: Check if the method correctly validates a positive integer
+>>> bg.integer_validator("my_int", 12)
+
+>>> bg.integer_validator("width", 89)
 
 Invalid Inputs
 --------------
 
 The `integer_validator` method raises a TypeError when the value is not an integer.
 
->>> bg.integer_validator("name", "John")  # Test Case 2: Check if the method raises a TypeError when the value is not an integer
+>>> bg.integer_validator("name", "John")
 Traceback (most recent call last):
 TypeError: name must be an integer
 
 The `integer_validator` method raises a ValueError when the value is less than or equal to 0.
 
->>> bg.integer_validator("age", 0)  # Test Case 3: Check if the method raises a ValueError when the value is less than or equal to 0
+>>> bg.integer_validator("age", 0)
 Traceback (most recent call last):
 ValueError: age must be greater than 0
 
 # Test Case 3: Check if the method raises a ValueError when the value is less than or equal to 0
 >>> bg.integer_validator("distance", -4)
 Traceback (most recent call last):
-...
 ValueError: distance must be greater than 0
 
 """

@@ -38,5 +38,5 @@ class Square(Rectangle):
         instance method that prints user friendly format class
         info
         """
-        return "[" + self.__class__.__name__ + "] " + \
+        return "[Rectangle] " + \
             str(self.__size) + "/" + str(self.__size)

@@ -16,11 +16,11 @@ class Square(Rectangle):
         """
         initializes a Square instance
         calls ancestor method integer_validator
-        to validate type of size
+        to validate size
 
         Args:
             size(int): the size of the square
         """
         self.integer_validator("size", size)
-        super().__init__(size, size)
         self.__size = size
+        super().__init__(size, size)

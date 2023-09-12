@@ -28,8 +28,8 @@ class BaseGeometry:
         Method to validate that a value is a positive integer.
 
         Args:
-            name: The name of the value, assumed to be a string.
-            value: The value to validate.
+            name(string): The name of the value, assumed to be a string.
+            value(int): The value to validate.
 
         Raises:
             TypeError: If value is not an integer.
@@ -37,5 +37,6 @@ class BaseGeometry:
         """
         if not isinstance(value, int):
             raise TypeError("{} must be an integer".format(name))
+
         if value <= 0:
             raise ValueError("{} must be greater than 0".format(name))

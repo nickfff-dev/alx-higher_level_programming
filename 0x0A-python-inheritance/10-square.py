@@ -18,8 +18,15 @@ class Square(Rectangle):
     def __init__(self, size):
         """
         initializes a Square instance
-        calls ancestor method integer_validator
-        to validate size
         """
-
         super().__init__(size, size)
+        self.__size = size
+    
+    def area(self):
+        """
+        funtion for area
+
+        Returns:
+            int: area
+        """
+        return super().area()

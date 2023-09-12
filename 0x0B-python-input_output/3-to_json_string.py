@@ -15,7 +15,6 @@ def to_json_string(my_obj):
            TypeError: my_obj is not serializable
     """
     try:
-        str = json.dumps(my_obj)
-        return str
+        return json.dumps(my_obj)
     except TypeError:
         raise TypeError(f'{my_obj} is not JSON serializable')

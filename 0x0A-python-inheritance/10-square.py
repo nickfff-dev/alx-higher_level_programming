@@ -2,6 +2,8 @@
 Rectangle = __import__('9-rectangle').Rectangle
 """
 This module defines a class Square
+with attributes size and methods area
+
 """
 
 
@@ -12,15 +14,14 @@ class Square(Rectangle):
     Attributes:
             size(int): the size of the square
     """
+
     def __init__(self, size):
         """
         initializes a Square instance
         calls ancestor method integer_validator
         to validate size
-
-        Args:
-            size(int): the size of the square
         """
-        self.integer_validator("size", size)
-        super().__init__(size, size)
+
+        super().integer_validator("size", size)
         self.__size = size
+        super().__init__(self.__size, self.__size)

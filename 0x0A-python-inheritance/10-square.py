@@ -9,7 +9,7 @@ with attributes size and methods area
 
 class Square(Rectangle):
     """
-    Class Square with attributes size and methods area
+    slass Square with attributes size and methods area
 
     Attributes:
             size(int): the size of the square
@@ -22,6 +22,4 @@ class Square(Rectangle):
         to validate size
         """
 
-        super().integer_validator("size", size)
-        self.__size = size
-        super().__init__(self.__size, self.__size)
+        super().__init__(size, size)

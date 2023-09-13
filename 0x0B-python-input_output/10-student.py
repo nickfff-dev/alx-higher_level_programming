@@ -32,10 +32,9 @@ class Student:
         """
 
         if attrs:
-            array = [i for i in
-                     list(map(lambda key: (key, self.__dict__[key])
-                              if key in self.__dict__ else None, attrs))
-                     if i is not None]
+            array = list(map(lambda key: (key, self.__dict__[key])
+                             if key in self.__dict__ else None, attrs))
+            array = [i for i in array if i is not None]
             return dict(array)
         else:
             return self.__dict__

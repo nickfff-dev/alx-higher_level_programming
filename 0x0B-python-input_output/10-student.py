@@ -31,7 +31,7 @@ class Student:
             attribute in _dict_ that are included in attrs
         """
 
-        if attrs:
+        if isinstance(attrs, list) and all(isinstance(x, str) for x in attrs):
             array = list(map(lambda key: (key, self.__dict__[key])
                              if key in self.__dict__ else None, attrs))
             array = [i for i in array if i is not None]

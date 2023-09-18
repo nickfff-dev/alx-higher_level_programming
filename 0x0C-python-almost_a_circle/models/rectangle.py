@@ -91,9 +91,17 @@ class Rectangle(Base):
 
     def display(self):
         """ method that draws the rectangle"""
+        # Print new lines for 'y'
+        print('\n'*self.__y, end='')
+        # Iterating through the height of the rectangle
         for row in range(self.__height):
+            # Print spaces for 'x'
+            print(' '*self.__x, end='')
+            # Print the rectangle
             for col in range(self.__width):
                 print('#', end='')
+
+            # Start a new line after each row
             print()
 
     def __str__(self):

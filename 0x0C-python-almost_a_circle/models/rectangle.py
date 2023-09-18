@@ -110,9 +110,14 @@ class Rectangle(Base):
             "/" + str(self.__y) + " - " + \
             str(self.__width) + "/" + str(self.__height)
 
-    def update(self, *args):
-        """Update rectangle attributes"""
+    def update(self, *args, **kwargs):
+        """Update the rectangle attributes via set args or keyword args"""
         attrs = ["id", "width", "height", "x", "y"]
-        if len(args) > 0:
+        if args and len(args) > 0:
             for attr, arg in zip(attrs, args):
                 setattr(self, attr, arg)
+        else:
+            if len(kwargs):
+                for key in kwargs:
+                    if key in attrs:
+                        setattr(self, key, kwargs[key])

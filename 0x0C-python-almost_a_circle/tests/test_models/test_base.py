@@ -4,7 +4,7 @@ import unittest
 from models.base import Base
 
 
-class TestBase(unittest.TestCase):
+class test_base(unittest.TestCase):
     """Defines a class for the unittest of class Base"""
 
     @classmethod

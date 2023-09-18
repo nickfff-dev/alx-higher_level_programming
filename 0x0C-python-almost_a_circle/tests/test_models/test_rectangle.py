@@ -7,7 +7,7 @@ from models.base import Base
 from models.rectangle import Rectangle
 
 
-class TestRectangle(unittest.TestCase):
+class test_rectangle(unittest.TestCase):
     """Defines a class for the unittest of class Rectangle"""
 
     @classmethod

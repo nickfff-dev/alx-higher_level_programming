@@ -20,3 +20,20 @@ class Square(Rectangle):
         """ str representation of class"""
         return "[Square] " + "(" + str(self.id) + ") " + str(self.x) + \
             "/" + str(self.y) + " - " + str(self.width)
+
+    @property
+    def size(self):
+        """ Getter for size which represents the width of
+            the square as a square's width and height are equal."""
+        return self.width
+
+    @size.setter
+    def size(self, value):
+        """ Setter for size.
+
+            Note:
+            It uses the setters for width and height from
+            the Rectangle class for validation.
+        """
+        self.width = value
+        self.height = value

@@ -18,8 +18,8 @@ class Base:
         if id is not None:
             self.id = id
         else:
-            type(self).__nb_objects += 1
-            self.id = type(self).__nb_objects
+            Base.__nb_objects += 1
+            self.id = Base.__nb_objects
 
     @staticmethod
     def to_json_string(list_dictionaries):
@@ -30,7 +30,10 @@ class Base:
         Returns:
             string
         """
-        if list_dictionaries is None:
+        if list_dictionaries is None or list_dictionaries == []:
             return "[]"
-        else:
-            return json.dumps(list_dictionaries)
+        if (type(list_dictionaries) != list or
+                not all(type(obj) == dict for obj in list_dictionaries)):
+            err = ("list_dictionaries must be a list of dictionaries")
+            raise TypeError(err)
+        return json.dumps(list_dictionaries)

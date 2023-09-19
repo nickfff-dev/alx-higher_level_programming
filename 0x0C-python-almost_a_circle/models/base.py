@@ -41,7 +41,6 @@ class Base:
     @classmethod
     def save_to_file(cls, list_objs):
         """saves json string to file"""
-        print(cls(45, 16, 12, 13))
         filename = cls.__name__ + ".json"
 
         if list_objs is not None and len(list_objs):
@@ -72,3 +71,18 @@ class Base:
 
         newobj.update(**dictionary)
         return newobj
+
+    @classmethod
+    def load_from_file(cls):
+        """returns a list of instances"""
+        filename = cls.__name__ + ".json"
+        try:
+            with open(filename, 'r', encoding='utf-8') as myfile:
+                all_objs = cls.from_json_string(myfile.read())
+            if all_objs and len(all_objs):
+                all_instnces = [cls.create(**obj) for obj in all_objs]
+                return all_instnces
+            else:
+                return []
+        except FileNotFoundError:
+            return []

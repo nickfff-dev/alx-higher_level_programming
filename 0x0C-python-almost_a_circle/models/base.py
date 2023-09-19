@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """this module defines a Base class"""
 import json
+import csv
 
 
 class Base:
@@ -85,4 +86,42 @@ class Base:
             else:
                 return []
         except FileNotFoundError:
+            return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """saves object to file in CSV format"""
+        filename = cls.__name__ + ".csv"
+
+        with open(filename, "w", newline="") as csvfile:
+            if list_objs is not None and len(list_objs):
+                if cls.__name__ == "Rectangle":
+                    field_names = ["id", "width", "height", "x", "y"]
+                else:
+                    field_names = ["id", "size", "x", "y"]
+                writer = csv.DictWriter(csvfile, fieldnames=field_names)
+                for obj in list_objs:
+                    writer.writerow(obj.to_dictionary())
+            else:
+                csvfile.write("[]")
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """loads object from file in CSV format"""
+        filename = cls.__name__ + ".csv"
+
+        try:
+            with open(filename, "r", newline="") as csvfile:
+                if cls.__name__ == "Rectangle":
+                    field_names = ["id", "width", "height", "x", "y"]
+                else:
+                    field_names = ["id", "size", "x", "y"]
+                list_objs = csv.DictReader(csvfile, fieldnames=field_names)
+                if list_objs:
+                    list_objs = [dict([k, int(v)] for k, v in insta.items())
+                                 for insta in list_objs]
+                    return [cls.create(**y) for y in list_objs]
+                else:
+                    return []
+        except IOError:
             return []

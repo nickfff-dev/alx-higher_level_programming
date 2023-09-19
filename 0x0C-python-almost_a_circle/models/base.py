@@ -66,10 +66,9 @@ class Base:
     def create(cls, **dictionary):
         """ returns an instance with all attributes already set"""
         if cls.__name__ == "Rectangle":
-            newobj = cls(30, 15, 6, 5)
-            newobj.update(**dictionary)
+            newobj = cls(30, 30)
         else:
-            newobj = cls(30, 15, 6)
-            newobj.update(**dictionary)
+            newobj = cls(30)
 
+        newobj.update(**dictionary)
         return newobj

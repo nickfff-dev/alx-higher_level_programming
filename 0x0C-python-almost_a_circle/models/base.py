@@ -25,11 +25,13 @@ class Base:
     def to_json_string(list_dictionaries):
         """the JSON string representation of list_dictionaries
          Args:
-            list_dictionaries(list): a list of dicts
+            list_dictionaries(list): a list of dicts.
+
+        Returns:
+            string
         """
         if list_dictionaries is None or list_dictionaries == []:
             return "[]"
-
         if type(list_dictionaries) != list or \
                 not all(type(obj) == dict for obj in list_dictionaries):
             err = ("list_dictionaries must be a list of dictionaries")

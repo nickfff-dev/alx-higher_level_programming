@@ -50,3 +50,13 @@ class Base:
         obj_string = cls.to_json_string(list_dictionaries)
         with open(filename, "w", encoding="utf-8") as myfile:
             myfile.write(obj_string)
+
+    @staticmethod
+    def from_json_string(json_string):
+        """returns the list of the JSON string representation"""
+
+        if json_string is None or json_string == "":
+            return []
+        if type(json_string) is not str:
+            raise TypeError("json_string must be a string")
+        return json.loads(json_string)

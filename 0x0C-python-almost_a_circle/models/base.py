@@ -41,6 +41,7 @@ class Base:
     @classmethod
     def save_to_file(cls, list_objs):
         """saves json string to file"""
+        print(cls(45, 16, 12, 13))
         filename = cls.__name__ + ".json"
 
         if list_objs is not None and len(list_objs):
@@ -60,3 +61,15 @@ class Base:
         if type(json_string) is not str:
             raise TypeError("json_string must be a string")
         return json.loads(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        """ returns an instance with all attributes already set"""
+        if cls.__name__ == "Rectangle":
+            newobj = cls(30, 15, 6, 5)
+            newobj.update(**dictionary)
+        else:
+            newobj = cls(30, 15, 6)
+            newobj.update(**dictionary)
+
+        return newobj

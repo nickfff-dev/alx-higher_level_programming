@@ -27,12 +27,11 @@ class Base:
          Args:
             list_dictionaries(list): a list of dicts
         """
-        if list_dictionaries is None:
+        if list_dictionaries is None or list_dictionaries == []:
             return "[]"
-        if not len(list_dictionaries):
-            return "[]"
-        if not type(list_dictionaries) == list or \
-                not all(isinstance(obj, dict) for obj in list_dictionaries):
+
+        if type(list_dictionaries) != list or \
+                not all(type(obj) == dict for obj in list_dictionaries):
             err = ("list_dictionaries must be a list of dictionaries")
             raise TypeError(err)
         return json.dumps(list_dictionaries)

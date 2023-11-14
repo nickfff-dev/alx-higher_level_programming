@@ -1,8 +1,10 @@
 #!/usr/bin/node
-// function that logs count
-let count = 0;
+// function that reverses list
 
-exports.logMe = function (elem) {
-  console.log(`${count}: ${elem}`);
-  count += 1;
+exports.esrever = function (list) {
+  const reversedList = [];
+  for (let i = list.length - 1; i >= 0; i--) {
+    reversedList.push(list[i]);
+  }
+  return reversedList;
 };

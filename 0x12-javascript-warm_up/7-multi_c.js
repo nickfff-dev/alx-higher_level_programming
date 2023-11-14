@@ -5,8 +5,10 @@ if (process.argv[2]) {
     console.log('Missing number of occurrences');
   } else {
     if (Number(process.argv[2])) {
-      Array.from({ length: Number(process.argv[2]) }, (_, i) => i)
-        .forEach(item => console.log('C is fun'));
+      const mynu = Number(process.argv[2]);
+      for (let i = 0; i < mynu; i++) {
+        console.log('C is fun');
+      }
     }
   }
 } else {

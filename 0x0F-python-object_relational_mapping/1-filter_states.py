@@ -9,7 +9,7 @@ if __name__ == '__main__':
     db = MySQLdb.connect(password=sys.argv[2], database=sys.argv[3],
                          user=sys.argv[1], port=3306)
     cur = db.cursor()
-    cur.execute('SELECT id, name FROM states WHERE NAME LIKE \
+    cur.execute('SELECT id, name FROM states WHERE name LIKE \
                 "N%" ORDER BY id ASC')
     rows = cur.fetchall()
     for col in rows:

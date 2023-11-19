@@ -2,6 +2,8 @@
 """ This module defines a script that uses
     mysqlclient to make filter queries to a db
 """
+
+
 if __name__ == '__main__':
     import MySQLdb
     import sys
@@ -9,8 +11,8 @@ if __name__ == '__main__':
     db = MySQLdb.connect(password=sys.argv[2], database=sys.argv[3],
                          user=sys.argv[1], port=3306, host='localhost')
     cur = db.cursor()
-    cur.execute('SELECT id, name FROM states \
-                WHERE name = %s ORDER BY id ASC', (sys.argv[4],))
+    cur.execute("SELECT id, name FROM states \
+                WHERE name = '{}' ORDER BY id ASC".format(sys.argv[4]))
     rows = cur.fetchall()
     for col in rows:
         print(col)

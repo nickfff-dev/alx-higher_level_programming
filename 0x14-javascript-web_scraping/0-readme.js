@@ -2,10 +2,11 @@
 const fs = require('fs');
 
 let filePath = process.argv[2]; // Get the file path from command line arguments
-let strToWrite = process.argv[3]; // Get the string to write from command line arguments
 
-fs.writeFile(filePath, strToWrite, 'utf-8', (err) => {
+fs.readFile(filePath, 'utf-8', (err, data) => {
  if (err) {
-  console.error(err);
+   console.error(err);
+ } else {
+   console.log(data);
  }
 });

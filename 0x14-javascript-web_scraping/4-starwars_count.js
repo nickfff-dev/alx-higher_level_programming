@@ -4,6 +4,10 @@ const request = require('request');
 const apiUrl = process.argv[2]; // Get the API URL from command line arguments
 let count = 0;
 
+if (!apiUrl) {
+  console.error('No URL given');
+  process.exit(1);
+}
 request.get(apiUrl, (err, res, body) => {
   if (err) {
     console.error(err);

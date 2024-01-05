@@ -5,6 +5,10 @@ const fs = require('fs');
 const url = process.argv[2]; // Get the URL from command line arguments
 const filePath = process.argv[3]; // Get the file path from command line arguments
 
+if (!url) {
+  console.error('No URL given');
+  process.exit(1);
+}
 request.get(url, (err, res, body) => {
   if (err) {
     console.error(err);

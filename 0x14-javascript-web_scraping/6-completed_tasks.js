@@ -1,29 +1,16 @@
 #!/usr/bin/node
 const request = require('request');
-
-const url = process.argv[2]; // Get the URL from command line arguments
-
-if (!url) {
-  console.error('No URL given');
-  process.exit(1);
-}
-request.get(url, (err, res, body) => {
-  if (err) {
-    console.error(err);
-  } else {
+request(process.argv[2], function (error, response, body) {
+  if (!error) {
     const todos = JSON.parse(body);
-    const completedTasks = {};
-
+    const completed = {};
     todos.forEach((todo) => {
-      if (!completedTasks[todo.userId]) {
-        completedTasks[todo.userId] = 0;
-      }
-
-      if (todo.completed) {
-        completedTasks[todo.userId]++;
+      if (todo.completed && completed[todo.userId] === undefined) {
+        completed[todo.userId] = 1;
+      } else if (todo.completed) {
+        completed[todo.userId] += 1;
       }
     });
-
-    console.log(completedTasks);
+    console.log(completed);
   }
 });

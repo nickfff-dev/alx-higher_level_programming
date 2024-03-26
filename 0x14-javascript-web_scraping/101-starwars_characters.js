@@ -1,26 +1,20 @@
 #!/usr/bin/node
 const request = require('request');
-
-const movieId = process.argv[2]; // Get the movie ID from command line arguments
-
-if (!movieId) {
-  console.error('No movie ID given');
-  process.exit(1);
-}
-request.get(`https://swapi-api.alx-tools.com/api/films/${movieId}`, (err, res, body) => {
-  if (err) {
-    console.error(err);
-  } else {
-    const jsonBody = JSON.parse(body);
-    jsonBody.characters.forEach((characterUrl) => {
-      request.get(characterUrl, (err, res, body) => {
-        if (err) {
-          console.error(err);
-        } else {
-          const characterJson = JSON.parse(body);
-          console.log(characterJson.name);
-        }
-      });
-    });
+const url = 'https://swapi-api.hbtn.io/api/films/' + process.argv[2];
+request(url, function (error, response, body) {
+  if (!error) {
+    const characters = JSON.parse(body).characters;
+    printCharacters(characters, 0);
   }
 });
+
+function printCharacters (characters, index) {
+  request(characters[index], function (error, response, body) {
+    if (!error) {
+      console.log(JSON.parse(body).name);
+      if (index + 1 < characters.length) {
+        printCharacters(characters, index + 1);
+      }
+    }
+  });
+}
